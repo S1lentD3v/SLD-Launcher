@@ -1,17 +1,22 @@
 # SLD-Launcher
- A car-focused Android launcher for head units and Android Automotive. A neon or simple dashboard with a live road animation that moves at your real speed, a full-screen app popout page, Glass and Classic styles with themes and full colour customisation, casting, and built-in updates.
-
 
 A home screen for Android head units and Android Automotive cars, plus **SLD Companion**, its
-phone app. The launcher gives you a neon dashboard with a road animation that moves at your real
-speed, a file manager, a popout page for apps like Google Maps, casting, and the Streaming deck.
-The companion streams your phone's screen to the car (or your phone's desktop, where supported),
-keeps both apps looking the same, shows your phone's notifications on the car, sends files and
-updates the head unit over the network. Everything between the phone and the car is encrypted,
-and only phones you've paired can connect.
+phone app.
 
-<img width="1057" height="489" alt="Screenshot 2026-11-10 012021" src="https://github.com/user-attachments/assets/b0c256f6-baa7-4057-b229-e39f1dc9a7df" />
-<img width="1047" height="472" alt="Screenshot 2026-11-10 012301" src="https://github.com/user-attachments/assets/cad77023-b7fc-4803-b35d-110fb71b7659" />
+The launcher has a full-page neon dashboard with a road that moves at your real speed and bends
+as you go round corners. It also has the radio, a file manager, a popout page for apps like
+Google Maps, casting and the Streaming deck.
+
+The companion streams your phone's screen (or your phone's desktop, where supported) to the car,
+keeps both apps looking the same, and shows your phone's notifications and battery on the car. It
+also shares the clipboard, reminds you where you parked, sends files, and updates the head unit
+over the network. Everything between the phone and the car is encrypted, and only phones you've
+paired can connect.
+
+<img width="724" height="330" alt="Screenshot 2026-11-10 224838" src="https://github.com/user-attachments/assets/6129db49-c2fa-443a-9a15-3242d6de80de" />
+
+<img width="723" height="329" alt="Screenshot 2026-11-10 224852" src="https://github.com/user-attachments/assets/d28aaeaa-9c1c-4073-85ff-797a3d69aa43" />
+
 
 
 
@@ -29,23 +34,42 @@ Swipe sideways, or tap the dots in the top bar, to move between pages. Turn any 
 | Page | What's on it |
 | --- | --- |
 | **Files** (the square dot) | A file manager for the head unit's storage and USB drives |
-| **Dashboard** | Road animation, speed and trip, weather and Now Playing |
+| **Dashboard** | The road scene, with speed and trip, weather and Now Playing floating on top |
 | **Popout** | Another app, such as Google Maps, in a large window inside the launcher |
 | **Streaming deck** | Your phone's screen or desktop, through SLD Companion |
 
 ## SLD Launcher features
 
-- **Live dashboard.** An animated neon road with your car on it, moving at your actual speed.
-  On Android Automotive the speed comes straight from the car's speedometer; everywhere else it
-  comes from GPS. It stops animating when you're parked.
-- **Speed, weather and Now Playing cards.** Weather from [Open-Meteo](https://open-meteo.com/)
-  (no API key needed); media controls for whatever is playing. Choose mph or km/h and °C or °F
-  in **Settings → Measurements**.
+### Dashboard
+
+- **A full-page road scene.** A neon road with your car on it fills the page, moving at your
+  actual speed. On Android Automotive the speed comes straight from the car's speedometer;
+  everywhere else it comes from GPS. It stops animating when you're parked.
+- **The road bends with you.** Going round a corner, the road ahead curves the same way and the
+  car leans into the turn, worked out from how fast your GPS heading is turning. It shows the
+  bend you're in, a second or so behind, since the launcher has no map of the road ahead.
+- **Speed, weather and Now Playing float on top.** Weather comes from
+  [Open-Meteo](https://open-meteo.com/) (no API key needed). Choose mph or km/h and °C or °F in
+  **Settings → Measurements**.
+- **Now Playing** shows the song, artist and album art for whatever is playing, with controls.
+  Long titles scroll instead of being cut off. **Drag the card** along the bottom to the left or
+  right side; it stays where you put it.
+- **Radio.** When the radio is on, the Now Playing card shows the band, frequency and station
+  (with the song, if the station sends it), and ◄ ► seek. Hold the card for the radio panel; on
+  head units with a built-in radio it also has band switching and 6 presets per band (tap to
+  tune, hold to save). Choose your radio app in **Settings → Shortcuts** if it isn't found
+  automatically.
 - **Trip meter.** The speed card shows this trip's driving time and distance. A new trip starts
   by itself after the car has been parked for 2 hours; long-press the card to reset it.
 - **Speed warning.** Set a limit in **Settings → Measurements → Speed warning** and the speed turns
   red, with one soft chime, when you go over it. (It's your own limit: the launcher doesn't know
   the road's speed limit.)
+- **0–60 mph / 0–100 km/h timer.** Switch it on in **Settings → Measurements**. Pull away from a
+  stop and the time shows on the speed card, along with your best.
+- **Reset GPS** in **Settings → Measurements**, for when the position or speed is stuck.
+
+### Pages and apps
+
 - **Popout page.** Shows an app in a window over the page. It opens only when you press its
   button and closes when you leave the page; press the button again and the app carries on where
   it was. Hold the card to choose a different app.
@@ -68,15 +92,27 @@ Swipe sideways, or tap the dots in the top bar, to move between pages. Turn any 
 <img width="733" height="331" alt="Screenshot 2026-11-10 053229" src="https://github.com/user-attachments/assets/1e731ec5-df78-407c-9a90-3ee9183b8109" />
 <img width="377" height="783" alt="Screenshot 2026-11-10 053215" src="https://github.com/user-attachments/assets/b5e17090-1fa6-474f-b704-91369c904e88" />
 
+- **App drawer and dock.** Long-press an app in the drawer to add it to the dock. **Show hidden
+  apps** (in **Settings → Shortcuts**) also lists apps that have no icon of their own, such as
+  some head units' built-in settings and tools.
+- **Right-hand drive** (in **Settings → Shortcuts**) puts the dock's buttons on the right, nearer
+  the driver.
 
+### With your phone
 
 - **Phone notifications.** Messages and other alerts from a connected phone pop up as a banner at
   the top for a few seconds. Tap one to close it. Switch them off on the car in
   **Settings → Streaming deck**.
+- **Phone battery and signal** show in the top bar while SLD Companion is connected. The battery
+  turns green while charging and red when it's low.
+- **Shared clipboard.** Copy text on the phone and paste it on the car, or the other way round.
+  It's off until you switch it on in SLD Companion.
 - **Casting.** Apps that cast with DLNA / UPnP (BubbleUPnP, VLC, Plex, Kodi and many gallery and
   music apps) can play videos, music and photos on the head unit. See [Casting](#casting) below.
-- **Fits the screen.** The layout adapts to small or short head-unit screens, so the cards and
-  buttons always fit.
+
+### Look
+
+- **Fits the screen.** The layout adapts to small or short head-unit screens, so everything fits.
 - **Two styles, light and dark.** *Glass* (translucent cards on a glowing gradient wallpaper) or
   *Classic* (flat cards), each in light and dark mode. The look stays in sync with SLD Companion
   both ways.
@@ -84,27 +120,31 @@ Swipe sideways, or tap the dots in the top bar, to move between pages. Turn any 
   **Settings → Appearance → Themes**. Save your own, use ones saved on a connected phone, and
   share a look as a short **theme code** that anyone can type in to get the same colours.
 - **Automatic light/dark.** Switches to light at sunrise and dark at sunset, wherever the car is.
+  Or let it **follow the head unit** (**Settings → Appearance**), which on most cars means it
+  goes dark when the headlights come on.
 - **Colour customisation.** Tap the brush in the top bar to change the background gradient,
   wallpaper glows, glass tint, accent, date text, road edges, lane markings, the car's glow and
   under-glow, and even the car's paint. Colours are saved separately for light and dark mode.
 
 <img width="620" height="424" alt="Screenshot 2026-11-10 012124" src="https://github.com/user-attachments/assets/c14789e3-8229-4bc2-a6b8-c4b0e419cb7e" />
 
-
+- **Screensaver when parked.** After the number of minutes you choose in
+  **Settings → Appearance**, the screen goes black with a dim clock. A tap or driving off wakes it.
 - **Driving profiles.** **Day**, **Night** and **Passenger** each remember a look, which pages are
   shown and (where the head unit allows it) the volume, and switch them all in one tap. Use
   **Save current setup as…** to store what's on screen in one of them.
-- **Built for the car.** Landscape, usable while driving on Android Automotive, a lite mode for
-  slower head units, a customisable dock (long-press an app in the drawer to add it), phone and
-  music shortcuts, and an app to open automatically on start-up.
+
+### Built for the car
+
+- Landscape, usable while driving on Android Automotive, a lite mode for slower head units, phone
+  and music shortcuts, and an app to open automatically on start-up.
 
 <img width="608" height="292" alt="Screenshot 2026-11-10 012212" src="https://github.com/user-attachments/assets/e343f2dd-ac93-4289-a039-3a3ce364be09" />
 
-
-- **Setup help.** A first-run checklist walks you through the permissions. On head units with
-  no settings screen for a permission, the launcher can switch it on itself through USB
-  debugging; it asks first, and otherwise shows the command to run.
-
+- **Setup help.** A first-run checklist walks you through the permissions, including making SLD
+  Launcher the home screen. On head units with no settings screen for a permission, the launcher
+  can switch it on itself through USB debugging; it asks first, and otherwise shows the command
+  to run.
 - **USB debugging tools.** **Settings → USB debugging (ADB)** shows what's on, can turn it on and
   off, and can find hidden developer and factory menus.
 
@@ -117,9 +157,9 @@ Swipe sideways, or tap the dots in the top bar, to move between pages. Turn any 
 
 ## SLD Companion features
 
-- **Connect** to the head unit over Wi-Fi or USB tethering. It finds head units automatically, or
-  you can type the address. The first time, you pair the two with a 6-digit code (see
-  [Security](#security)).
+- **Connect** to the head unit over Wi-Fi, your phone's hotspot or USB tethering. It finds head
+  units automatically, or you can type the address. The first time, you pair the two with a
+  6-digit code (see [Security](#security)).
 - **Stays connected** in the background, with a quiet notification, until you tap
   **Disconnect**.
 - **Connect automatically** when the car is near. Pair the car's Bluetooth once (Android 12+) and
@@ -134,6 +174,15 @@ Swipe sideways, or tap the dots in the top bar, to move between pages. Turn any 
   phone that supports it; the companion checks and tells you if yours doesn't.
 - **Notifications on the car.** Switch on **Show notifications on the car** and your messages pop
   up on the head unit while connected. Silent and private notifications stay on the phone.
+- **Battery and signal on the car.** While connected, the car's top bar shows your phone's battery
+  and signal. No extra permission is needed.
+- **Parking reminder.** When you leave the car, the phone remembers where it last stopped. A few
+  minutes after the connection drops, a notification (and a card in the app) offers walking
+  directions back to it in Google Maps. It clears itself when you reconnect.
+- **Shared clipboard.** Switch on **Share the clipboard with the car**: text you copy on the phone
+  can be pasted on the head unit, and text copied there arrives on the phone. Passwords and other
+  text marked as sensitive are never shared. (Android only lets an app read the clipboard while
+  it's open, so open SLD Companion after copying.)
 - **Send to car.** Share a link to SLD Companion and choose **Send to car**: videos and music play
   on the head unit, and YouTube and web pages open in their app there.
 - **Same look as the launcher.** Change the style, light/dark mode, theme or colours on either
@@ -157,11 +206,13 @@ Swipe sideways, or tap the dots in the top bar, to move between pages. Turn any 
   tap **Connect**, both screens show the same 6-digit code; check they match and confirm on both.
   After that the phone connects straight in. Remove paired phones on the head unit in
   **Settings → Streaming deck**.
-- **Encrypted.** Everything between the phone and the car (settings, files, notifications and the
-  mirrored screen and sound) is encrypted with TLS. Each device has its own key, kept in Android's
-  secure key store.
-- **Update both apps together.** SLD Launcher and SLD Companion 1.6 and newer only connect to each
-  other. An older companion is asked to update, and an older launcher shows as "too old".
+- **Encrypted.** Everything between the phone and the car (settings, files, notifications, the
+  clipboard and the mirrored screen and sound) is encrypted with TLS. Each device has its own
+  key, kept in Android's secure key store.
+- **Versions.** SLD Launcher and SLD Companion connect to each other from version 1.6 onwards; an
+  older companion is asked to update, and an older launcher shows as "too old". Newer and older
+  versions from 1.6 on work together, and features one side doesn't have yet are simply left
+  out. For example, the battery, clipboard and parking reminder need 1.7 on both.
 - **Casting** is limited to connected, paired phones by default (see [Casting](#casting)).
 
 ## Requirements
@@ -180,7 +231,8 @@ The popout page also needs freeform windows switched on (see below).
 Download both apps from the latest [release](https://github.com/S1lentD3v/SLD-Launcher/releases):
 
 - **SLD-Launcher-*version*.apk** for the head unit. Install it, then choose **SLD Launcher** as the
-  home app when Android asks (or in **Settings → Apps → Default apps → Home app**).
+  home app when Android asks (or in **Settings → Apps → Default apps → Home app**). The setup
+  checklist and **Settings → Default launcher** can also take you there.
 - **SLD-Companion-*version*.apk** for your phone.
 
 ## Setting up
@@ -219,8 +271,8 @@ adb shell appops set com.silentsoftware.carlauncher MANAGE_EXTERNAL_STORAGE allo
 
 ### Streaming deck
 
-1. Put the phone and head unit on the same Wi-Fi, or connect them by USB with **USB tethering**
-   on.
+1. Put the phone and head unit on the same Wi-Fi (or the phone's hotspot), or connect them by USB
+   with **USB tethering** on.
 2. Open SLD Companion, pick your head unit (or enter its address) and tap **Connect**.
 3. The first time, both screens show a 6-digit code. Check they match and confirm on both.
 4. Open the **Streaming deck**, choose **Phone screen** and tap **Start mirroring**, then accept
@@ -254,17 +306,14 @@ Casting never pauses while driving, so passengers can watch.
 
 ### Command Center
 
-The Command Center connects to the head unit's ADB over the network, on port 5555. The head unit
-must have network ADB on (for example `adb tcpip 5555` from a computer), and shows **Allow USB
-debugging?** the first time. (Wireless debugging pairing is used for desktop mode on the phone,
-not for the head unit.)
+The Command Center (in SLD Companion) connects to the **head unit's** ADB over the network, on
+port 5555. The head unit must have network ADB on (for example `adb tcpip 5555` from a computer),
+and shows **Allow USB debugging?** the first time.
 
 <img width="400" height="858" alt="Screenshot 2026-11-10 013613" src="https://github.com/user-attachments/assets/7a495e33-9721-4f11-9d6e-604e1e8b3b9e" />
 <img width="405" height="861" alt="Screenshot 2026-11-10 013624" src="https://github.com/user-attachments/assets/785d614d-637e-43f6-aacb-bbbf7d2ac8dd" />
 <img width="403" height="866" alt="Screenshot 2026-11-10 013619" src="https://github.com/user-attachments/assets/cc61844e-2667-4122-bfab-451d663b8bca" />
 <img width="408" height="865" alt="Screenshot 2026-11-10 013730" src="https://github.com/user-attachments/assets/20c5d90a-0db9-4662-8555-0e705272e5bf" />
-
-
 
 
 ## Android Automotive
@@ -275,6 +324,7 @@ not for the head unit.)
 - Android Automotive keeps its own system bar (with climate controls) at the bottom; the launcher
   works alongside it.
 - The car sets the volume itself, so driving profiles keep only the look and pages there.
+- The car's own radio app shows on the Now Playing card like any other radio.
 - Production cars usually only allow apps from Google Play, so sideloading may not be possible on
   them. Aftermarket head units are fine.
 
@@ -301,9 +351,9 @@ needs it stops working.
 
 | Permission | What it's for |
 | --- | --- |
-| **Location** (precise) | Speed from GPS, the trip meter, local weather, and sunrise and sunset for automatic light/dark |
+| **Location** (precise) | Speed and heading from GPS, the trip meter, the road bends, local weather, sunrise and sunset for automatic light/dark, and where you parked (sent only to your own paired phone) |
 | **Car speed** (Android Automotive) | Speed from the car's own speedometer instead of GPS |
-| **Notification access** | Now Playing: shows and controls whatever music is playing |
+| **Notification access** | Now Playing and the radio: shows and controls whatever is playing |
 | **All files access** (Android 11+) / **Storage** (older) | The Files page |
 | **Display over other apps** | Rounded corners on the popout window |
 | **Install unknown apps** | Installing launcher updates, and APKs from the Files page or sent from your phone |
@@ -311,7 +361,8 @@ needs it stops working.
 | Internet, network state | Weather, casting and update checks |
 | Local network | Lets SLD Companion find and connect to the head unit (asked on Android 17+) |
 | Wi-Fi multicast | Letting casting apps find the head unit |
-| See all apps | The app drawer, the dock, and finding hidden developer and factory menus |
+| Extra location commands | **Reset GPS** in Settings → Measurements |
+| See all apps | The app drawer, the dock, hidden apps, and finding hidden developer and factory menus |
 | Close background apps, reorder tasks | Tucking the popout app away when you leave its page |
 | Change secure settings (optional) | The USB debugging switch in **Settings → USB debugging**. Only granted if you allow it there |
 
@@ -325,13 +376,13 @@ shows the command to run.
 | --- | --- |
 | **Screen capture** (asked each time) | Phone screen mirroring |
 | **Microphone** (record audio) | Sending your phone's sound to the car. Only app audio is captured, never the microphone |
-| **Notifications** | The connection and mirroring notifications, "car is nearby", and entering the pairing code for desktop mode |
+| **Notifications** | The connection and mirroring notifications, "car is nearby", the parking reminder, and entering the pairing code for desktop mode |
 | **Notification access** (optional) | Notifications on the car. Only used while that switch is on |
 | **Accessibility** (Touch control) | Controlling the phone from the car's screen. Optional; switched on in Accessibility settings |
 | **Wireless debugging** (Developer options) | Desktop mode only: a one-time pairing so the companion can create the desktop screen. Android 16+ only |
 | **Car Bluetooth** (companion device, Android 12+) | Optional: connecting by itself when the phone connects to the car's Bluetooth |
 | **Install unknown apps** | Installing SLD Companion updates |
-| Local network, Wi-Fi multicast | Finding head units on your Wi-Fi (local network is asked on Android 17+) |
+| Local network, Wi-Fi multicast | Finding head units on your Wi-Fi or hotspot (local network is asked on Android 17+) |
 | Internet, network state | Connecting to the head unit and checking for updates |
 | Foreground service | Staying connected, and keeping mirroring and desktop mode running while you use other apps |
 | Run at start-up | Re-arming automatic connecting after the phone restarts |
@@ -345,7 +396,7 @@ shows the command to run.
 | `MainActivity.kt` | The home screen: pages, cards, dock, app drawer and settings menus |
 | `SwipePager.kt` | The swipeable pages |
 | `ScreenFit.kt` | Fits the layout to small and short screens |
-| `RoadView.kt` | The animated road and car |
+| `RoadView.kt` | The animated road and car, and the bends |
 | `MapWindow.kt`, `PopoutFrameOverlay.kt` | The popout app window and its rounded corners |
 | `MapPanel.kt` | The built-in Google Map |
 | `FileExplorer.kt` | The Files page |
@@ -353,11 +404,15 @@ shows the command to run.
 | `mirror/FileReceiver.kt` | Receiving files and launcher updates from the phone |
 | `mirror/MirrorProtocol.kt` | The phone ↔ head unit protocol (kept in sync with the companion's copy) |
 | `PhoneBanner.kt` | The phone notification banner |
+| `PhoneStatusDrawable.kt` | The phone's battery and signal in the top bar |
+| `SharedClipboard.kt` | The shared clipboard on the car's side |
 | `cast/Casting.kt`, `cast/DlnaRenderer.kt`, `cast/Scpd.kt` | Casting: the DLNA renderer, and who's allowed to cast |
 | `cast/CastPlayer.kt`, `cast/CastActivity.kt`, `cast/LinkOpener.kt` | The cast player, its screen, and links sent with Send to car |
+| `HeadUnitRadio.kt` | The radio on the Now Playing card, and head units' built-in radios |
 | `DrivingProfiles.kt` | Day, Night and Passenger profiles |
-| `TripMeter.kt` | The trip time and distance on the speed card |
-| `AppRepository.kt`, `AppGridAdapter.kt`, `Shortcut.kt` | The app drawer and the dock |
+| `TripMeter.kt`, `AccelTimer.kt` | The trip time and distance, and the 0–60 / 0–100 timer |
+| `Screensaver.kt` | The screensaver when parked |
+| `AppRepository.kt`, `AppGridAdapter.kt`, `Shortcut.kt` | The app drawer (including hidden apps) and the dock |
 | `MediaMonitor.kt`, `MediaListenerService.kt` | Now Playing |
 | `VehicleSpeed.kt`, `LocationTracker.kt` | Car speed and GPS |
 | `WeatherRepository.kt` | Weather from Open-Meteo |
@@ -376,6 +431,9 @@ shows the command to run.
 | `LinkService.kt`, `LinkWidget.kt` | Staying connected in the background, and the home-screen widget |
 | `AutoConnect.kt`, `CarBluetooth.kt` | Connecting automatically when the car is near |
 | `CarNotifications.kt` | Notifications on the car |
+| `PhoneStatus.kt` | Sending the phone's battery and signal to the car |
+| `PhoneClipboard.kt` | The shared clipboard on the phone's side |
+| `Parking.kt` | The parking reminder |
 | `StreamingActivity.kt`, `StreamSettings.kt` | The Streaming deck screen and each mode's stream settings |
 | `MirrorService.kt` | Streaming to the car: screen and sound capture, the video encoder, reconnects |
 | `TouchService.kt` | Touch control from the car's screen |
@@ -406,10 +464,7 @@ The look both apps share, and the secure link:
 | `ColorPicker.kt` | The colour picker |
 | `SecureLink.kt` | Device keys, TLS and the pairing code |
 
-### `Betas`
 
-`phone-desktop-mode` is a prototype that shows a phone's desktop mode on the launcher's
-streaming page.
 
 ### `Notes`
 The auto updater will not work if auto block is Enabled as its a security feature that stops apps updating themselves
