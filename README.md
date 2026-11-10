@@ -190,6 +190,14 @@ The Command Center connects to the head unit's ADB over the network, on port 555
 must have network ADB on (for example `adb tcpip 5555` from a computer), and shows **Allow USB
 debugging?** the first time. Android 11+ wireless debugging pairing isn't supported yet.
 
+<img width="400" height="858" alt="Screenshot 2026-11-10 013613" src="https://github.com/user-attachments/assets/7a495e33-9721-4f11-9d6e-604e1e8b3b9e" />
+<img width="405" height="861" alt="Screenshot 2026-11-10 013624" src="https://github.com/user-attachments/assets/785d614d-637e-43f6-aacb-bbbf7d2ac8dd" />
+<img width="403" height="866" alt="Screenshot 2026-11-10 013619" src="https://github.com/user-attachments/assets/cc61844e-2667-4122-bfab-451d663b8bca" />
+<img width="408" height="865" alt="Screenshot 2026-11-10 013730" src="https://github.com/user-attachments/assets/20c5d90a-0db9-4662-8555-0e705272e5bf" />
+
+
+
+
 ## Android Automotive
 
 - The car's own speed is used when you allow the **car speed** permission (asked alongside
