@@ -101,6 +101,7 @@ Swipe sideways, or tap the dots in the top bar, to move between pages. Turn any 
   you can type the address. The connection stays up until you tap **Disconnect**.
 - **Mirror** your phone's screen and sound when you choose, with optional touch control from the
   car's screen.
+- **Desktop mode** Your phones desktop mode straight to your radio head if supported (Android 16 or newer)
 - **Same look as the launcher.** Change the style, light/dark mode or colours on either side and
   the other follows.
 - **Send files** to the head unit over the network, mirroring or not, or share them to SLD
