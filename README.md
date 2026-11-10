@@ -4,8 +4,8 @@
 
 A home screen for Android head units and Android Automotive cars, plus **SLD Companion**, its
 phone app. The launcher gives you a neon dashboard with a road animation that moves at your real
-speed, a file manager, a popout page for apps like Google Maps, and phone mirroring. The
-companion mirrors your phone to the car, keeps both apps looking the same, sends files and
+speed, a file manager, a popout page for apps like Google Maps, and phone Streaming. The
+companion mirrors your phone to the car or your phones desktop if supported, keeps both apps looking the same, sends files and
 updates the head unit over the network.
 
 <img width="1057" height="489" alt="Screenshot 2026-11-10 012021" src="https://github.com/user-attachments/assets/b0c256f6-baa7-4057-b229-e39f1dc9a7df" />
@@ -29,7 +29,7 @@ Swipe sideways, or tap the dots in the top bar, to move between pages. Turn any 
 | **Files** (the square dot) | A file manager for the head unit's storage and USB drives |
 | **Dashboard** | Road animation, speed, weather and Now Playing |
 | **Popout** | Another app, such as Google Maps, in a large window inside the launcher |
-| **Phone mirroring** | Your phone's screen, through SLD Companion |
+| **Streaming Deck** | Your phone's screen or desktop, through SLD Companion |
 
 ## SLD Launcher features
 
@@ -55,11 +55,11 @@ Swipe sideways, or tap the dots in the top bar, to move between pages. Turn any 
   
 - **Phone mirroring.** Shows your phone's screen and plays its sound on the head unit. Control
   the phone by touching the picture, with Back, Home and Recents buttons and a full-screen mode.
-  Files sent from the phone land in **Downloads › SLD Companion**. See
-  [Phone mirroring](#phone-mirroring) below.
+  Files sent from the phone land in **Downloads › SLD Companion**.
   
-<img width="1044" height="473" alt="Screenshot 2026-11-10 012109" src="https://github.com/user-attachments/assets/665297fe-be40-40ca-805c-f125294d6cf5" />
-<img width="1049" height="472" alt="Screenshot 2026-11-10 012319" src="https://github.com/user-attachments/assets/de6dddea-8eca-420f-81bc-6bb1d6a1ea52" />
+<img width="733" height="331" alt="Screenshot 2026-11-10 053229" src="https://github.com/user-attachments/assets/1e731ec5-df78-407c-9a90-3ee9183b8109" />
+<img width="377" height="783" alt="Screenshot 2026-11-10 053215" src="https://github.com/user-attachments/assets/b5e17090-1fa6-474f-b704-91369c904e88" />
+
 
   
 - **Fits the screen.** The layout adapts to small or short head-unit screens, so the cards and
@@ -189,7 +189,7 @@ Options:
 
 The Command Center connects to the head unit's ADB over the network, on port 5555. The head unit
 must have network ADB on (for example `adb tcpip 5555` from a computer), and shows **Allow USB
-debugging?** the first time. Android 11+ wireless debugging pairing isn't supported yet.
+debugging?** the first time. Android 11+ wireless debugging pairing is supported now for desktop mode.
 
 <img width="400" height="858" alt="Screenshot 2026-11-10 013613" src="https://github.com/user-attachments/assets/7a495e33-9721-4f11-9d6e-604e1e8b3b9e" />
 <img width="405" height="861" alt="Screenshot 2026-11-10 013624" src="https://github.com/user-attachments/assets/785d614d-637e-43f6-aacb-bbbf7d2ac8dd" />
@@ -225,53 +225,67 @@ download is checked against its SHA-256 and the app's signing key before it's in
 
 ## Permissions
 
-### SLD Launcher
+Everything is optional except where noted. If you skip a permission, only the feature that
+needs it stops working.
 
-| Permission | Why |
+### SLD Launcher (head unit)
+
+| Permission | What it's for |
 | --- | --- |
-| Location | GPS speed and heading, local weather, the built-in map |
-| Car speed (Automotive) | Reading the car's speedometer |
-| Notification access | Showing and controlling what's playing |
-| Display over other apps | Rounded corners on the popout window (optional) |
-| All files access / storage | The Files page |
-| Kill background processes, reorder tasks | Managing the popout window |
-| Local network access (Android 17) | Phone mirroring and the companion connection |
-| Install packages | Updates, and installing APKs from the Files page or the phone |
-| Write secure settings | The USB debugging switch (granted once through ADB, optional) |
-| Query all packages | The app drawer, and finding hidden developer menus |
-| Internet | Weather, map tiles and update checks |
+| **Location** (precise) | Speed from GPS, and local weather. The road animation follows your speed |
+| **Car speed** (Android Automotive) | Speed from the car's own speedometer instead of GPS |
+| **Notification access** | Now Playing: shows and controls whatever music is playing |
+| **All files access** (Android 11+) / **Storage** (older) | The Files page |
+| **Display over other apps** | Rounded corners on the popout window |
+| **Install unknown apps** | Installing launcher updates, and APKs from the Files page or sent from your phone |
+| **Home app** (default launcher) | Makes SLD Launcher your home screen |
+| Internet, network state | Weather and update checks |
+| Local network | Lets SLD Companion find and connect to the head unit (asked on Android 17+) |
+| See all apps | The app drawer, the dock, and finding hidden developer and factory menus |
+| Close background apps, reorder tasks | Tucking the popout app away when you leave its page |
+| Change secure settings (optional) | The USB debugging switch in **Settings → USB debugging**. Only granted if you allow it there |
 
-### SLD Companion
+On head units with no settings screen for a permission (Android Automotive, for example), the
+launcher can switch it on itself through USB debugging. It always asks first, and otherwise
+shows the command to run.
 
-| Permission | Why |
+### SLD Companion (phone)
+
+| Permission | What it's for |
 | --- | --- |
-| Local network access (Android 17), multicast | Finding and connecting to the head unit |
-| Screen capture (foreground service) | Mirroring |
-| Record audio | Sending the phone's sound to the car |
-| Notifications | The mirroring notification |
-| Accessibility (optional) | Touch control from the car |
-| Install packages | Updating itself |
-| Internet | Updates and downloading launcher updates |
-
+| **Screen capture** (asked each time) | Phone screen mirroring |
+| **Microphone** (record audio) | Sending your phone's sound to the car. Only app audio is captured, never the microphone |
+| **Notifications** | The mirroring status notification, and entering the pairing code for desktop mode |
+| **Accessibility** (Touch control) | Controlling the phone from the car's screen. Optional; switched on in Accessibility settings |
+| **Wireless debugging** (Developer options) | Desktop mode only: a one-time pairing so the companion can create the desktop screen. Android 16+ only |
+| **Install unknown apps** | Installing SLD Companion updates |
+| Local network, Wi-Fi multicast | Finding head units on your Wi-Fi (local network is asked on Android 17+) |
+| Internet, network state | Connecting to the head unit and checking for updates |
+| Foreground service | Keeping mirroring and desktop mode running while you use other apps |
 
 ### `app` (SLD Launcher)
 
 | File | What it does |
 | --- | --- |
-| `MainActivity.kt` | The home screen: pages, cards, dock, app drawer, settings menus |
-| `ScreenFit.kt` | Fits the layout to small and short screens |
+| `MainActivity.kt` | The home screen: pages, cards, dock, app drawer and settings menus |
 | `SwipePager.kt` | The swipeable pages |
+| `ScreenFit.kt` | Fits the layout to small and short screens |
 | `RoadView.kt` | The animated road and car |
 | `MapWindow.kt`, `PopoutFrameOverlay.kt` | The popout app window and its rounded corners |
 | `MapPanel.kt` | The built-in Google Map |
 | `FileExplorer.kt` | The Files page |
-| `mirror/MirrorReceiver.kt`, `mirror/FileReceiver.kt` | Phone mirroring and receiving files |
+| `mirror/MirrorReceiver.kt` | Streaming deck: the phone's screen or desktop, its sound, touch and the app grid |
+| `mirror/FileReceiver.kt` | Receiving files and launcher updates from the phone |
 | `mirror/MirrorProtocol.kt` | The phone ↔ head unit protocol (kept in sync with the companion's copy) |
-| `Updater.kt` | Self-updates |
-| `SpecialAccess.kt`, `SelfAdb.kt`, `DevOptionsFinder.kt` | Permissions through USB debugging, and finding developer menus |
-| `Theming.kt`, `Glass.kt` | Styles and colour customisation |
+| `AppRepository.kt`, `AppGridAdapter.kt`, `Shortcut.kt` | The app drawer and the dock |
+| `MediaMonitor.kt`, `MediaListenerService.kt` | Now Playing |
 | `VehicleSpeed.kt`, `LocationTracker.kt` | Car speed and GPS |
-| `MediaMonitor.kt` | Now Playing |
+| `WeatherRepository.kt` | Weather from Open-Meteo |
+| `Theming.kt`, `Glass.kt` | Styles and colour customisation |
+| `Prefs.kt` | Saved settings |
+| `Updater.kt`, `UpdatedReceiver.kt` | Self-updates from GitHub |
+| `SpecialAccess.kt`, `SelfAdb.kt` | Switching permissions on through USB debugging |
+| `DevOptionsFinder.kt` | Finding hidden developer and factory menus |
 
 ### `companion` (SLD Companion)
 
@@ -279,19 +293,27 @@ download is checked against its SHA-256 and the app's signing key before it's in
 | --- | --- |
 | `MainActivity.kt` | The main screen |
 | `HeadUnitLink.kt` | The live connection to the head unit |
-| `MirrorService.kt`, `TouchService.kt` | Screen and sound capture, and touch control |
+| `StreamingActivity.kt`, `StreamSettings.kt` | The Streaming deck screen and each mode's stream settings |
+| `MirrorService.kt` | Streaming to the car: screen and sound capture, the video encoder, reconnects |
+| `TouchService.kt` | Touch control from the car's screen |
+| `TrackpadActivity.kt` | The phone as a trackpad and keyboard for desktop mode |
+| `desktop/DesktopServer.java` | Desktop mode's helper: creates the desktop screen, encodes it, and passes on touches and sound |
+| `desktop/DesktopAccess.kt`, `desktop/DesktopPairing.kt` | Wireless debugging pairing, and starting the helper |
+| `desktop/DesktopSupport.kt` | Checks whether the phone can run desktop mode |
+| `desktop/DesktopApps.kt` | The phone's apps, for the app grid on the car |
+| `MirrorProtocol.kt` | The phone ↔ head unit protocol (kept in sync with the launcher's copy) |
 | `LinkFiles.kt`, `ShareActivity.kt` | Sending files |
 | `LauncherUpdate.kt`, `Updater.kt` | Updating the head unit, and itself |
-| `AdbActivity.kt` | The Command Center |
-| `Look.kt` | Applies the shared look |
+| `AdbActivity.kt`, `Adb*Panel.kt` | The Command Center: setup, actions, apps and terminal tabs |
+| `Look.kt`, `CardPager.kt` | Applies the shared look; swipeable cards |
 
 ### `style`
 
-The shared look: glass drawables, the appearance store that both apps sync, the colour palette
-and the colour picker.
+The look both apps share: glass drawables (`Glass.kt`), the appearance store they keep in sync
+(`Appearance.kt`), the colour palette, and the colour picker (`ColorPicker.kt`).
 
-### `docs/experiments`
+### `Betas`
 
 `phone-desktop-mode` is a prototype that shows a phone's desktop mode on the launcher's
-mirroring page. It isn't part of either app yet.
+streaming page.
 
