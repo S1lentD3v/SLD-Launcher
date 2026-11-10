@@ -410,3 +410,7 @@ The look both apps share, and the secure link:
 
 `phone-desktop-mode` is a prototype that shows a phone's desktop mode on the launcher's
 streaming page.
+
+### `Notes`
+The auto updater will not work if auto block is Enabled as its a security feature that stops apps updating themselves
+turn it off in settings > Security/Security & Privacy and retry the update. you can turn it back on aftwards
